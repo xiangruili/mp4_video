@@ -10,11 +10,12 @@ mp4_video is a subclass of VideoWriter, with following additional features:
 3. Automatically use getframe() or print() to work for Matlab with remote connection
 
  The usage is shown by this simple example for a moving circle:
-   h = rectangle('Position', [0 0 1 1], 'Curvature', 1, 'FaceColor', 'k');
-   axis equal; axis off; xlim([0 10]); ylim([0 10]); % set axis range
-   vw = mp4_video('movingCircle.mp4', 4); % 4 frames per second
-   for x = 0:9 % circle location range
-       h.Position(1:2) = x; % move along diagonal
-       vw.addFrame(); % add current frame to video buffer
-   end
-   vw.save(); % finish the video
+ 
+     h = rectangle('Position', [0 0 1 1], 'Curvature', 1, 'FaceColor', 'k');
+     axis equal; axis off; xlim([0 10]); ylim([0 10]); % set axis range
+     vw = mp4_video('movingCircle.mp4', 4); % 4 frames per second
+     for x = 0:9 % circle location range
+         h.Position(1:2) = x; % move along diagonal
+         vw.addFrame(); % add current frame to video buffer
+     end
+     vw.save(); % finish the video
