@@ -1,5 +1,6 @@
 # mp4_video
 [![View mp4_video on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/74763-mp4_video)
+
 Create mp4 video from figure window, like what Matalb VideoWriter does.
 
 mp4_video is a subclass of VideoWriter, with following additional features:
