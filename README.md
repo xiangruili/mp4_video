@@ -1,4 +1,5 @@
 # mp4_video
+[![View mp4_video on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/74763-mp4_video)
 Create mp4 video from figure window, like what Matalb VideoWriter does.
 
 mp4_video is a subclass of VideoWriter, with following additional features:
@@ -7,7 +8,7 @@ mp4_video is a subclass of VideoWriter, with following additional features:
 
 2. The major benefit is to enable Linux support for mp4 format, using ffmpeg. If ffmpeg is not available, the uncompressed avi file will be kept.
 
-3. Automatically use getframe() or print() to work for Matlab with remote connection
+3. Automatically use getframe() or print() to work for Matlab with remote connection.
 
  The usage is shown by this simple example for a moving circle:
  
