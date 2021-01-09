@@ -16,7 +16,7 @@ classdef mp4_video < VideoWriter
 % 
 % This is based on VideoWriter, but restricts the output to the popular mp4
 % video only. The major benefits include enabling Linux support for mp4 format,
-% supporting Matlab thought ssh/putty connection, and supporting figure with UI
+% supporting Matlab throught ssh/putty connection, and supporting figure with UI
 % controls. The rect feature allows all OS to capture part of the figure so to
 % exclude UI control if needed.
 
@@ -27,12 +27,13 @@ classdef mp4_video < VideoWriter
   end
   
   methods
-    function obj = mp4_video(filename, frameRate, rect)
+    function obj = mp4_video(filename, frameRate, pos)
         % Construct mp4_video object to write video.
         %  vw = mp4_video(filename, frameRate, rect);
         %   filename: result file name (required). .mp4 will be added if needed.
         %   frameRate: frames per second. Default 30.
-        %   rect: Position in pixels to extract frame in figure.
+        %   pos: Position in pixels to extract frame in figure, or a figure
+        %   component, for example panel or axes, to capture.
         %       Default [] meeans full figure window.
         profile = 'MPEG-4';
         if ~ismember(profile, {VideoWriter.getProfiles.Name}) % likely Linux
@@ -45,7 +46,13 @@ classdef mp4_video < VideoWriter
         end
         if ~endsWith(filename, '.mp4'), filename = [filename '.mp4']; end
         obj@VideoWriter(filename, profile); % superclass constructor
-        if nargin>2, obj.rect = rect; end
+        if nargin>2
+            if ~isnumeric(pos)
+                pos = round(getpixelposition(pos, 1));
+                pos(3:4) = floor(pos(3:4)/2) * 2;
+            end
+            obj.rect = pos;
+        end
         if nargin>1 && ~isempty(frameRate), obj.FrameRate = frameRate; end
     end
     
