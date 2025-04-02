@@ -84,7 +84,7 @@ classdef mp4_video < VideoWriter
     function save(this)
         % Finish writing and close video file.
         this.close();
-        if strcmpi(this.FileFormat, 'mp4'), return; end % done for mp4
+        if strcmpi(this.FileFormat, 'mp4'), return; end % suppose getframe works 
         sz = [this.Width this.Height];
         if isempty(this.rect), this.rect = [0 0 sz-mod(sz,2)]; end
         opts = '-y -pix_fmt yuv420p '; % overwrite, yuv420p for "dumb players"
